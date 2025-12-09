@@ -62,21 +62,24 @@ public class UIController : MonoBehaviour
     void Update()
     {
         //ask for the current hitpoints
-        int healthPoints = playerDestructible.GetHitPoints();
-
-        //For every heart in our heart list
-        for (int i = 0; i < heartContainers.Count; i++)
+        if (playerDestructible != null)
         {
-            //If we have enough hitpoints...
-            if (i < healthPoints)
+            int healthPoints = playerDestructible.GetHitPoints();
+
+            //For every heart in our heart list
+            for (int i = 0; i < heartContainers.Count; i++)
             {
-                //Turn it on
-                heartContainers[i].SetActive(true);
-            }
-            else
-            {
-                //If not, turn it off
-                heartContainers[i].SetActive(false);
+                //If we have enough hitpoints...
+                if (i < healthPoints)
+                {
+                    //Turn it on
+                    heartContainers[i].SetActive(true);
+                }
+                else
+                {
+                    //If not, turn it off
+                    heartContainers[i].SetActive(false);
+                }
             }
         }
     }
@@ -95,14 +98,14 @@ public class UIController : MonoBehaviour
         }
     }
 
-    public void LoadLevel(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName);
-    }
+    //public void LoadLevel(string sceneName)
+    //{
+    //    SceneManager.LoadScene(sceneName);
+    //}
     
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    //public void RestartLevel()
+    //{
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //}
 
 }

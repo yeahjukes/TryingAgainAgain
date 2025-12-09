@@ -2,59 +2,157 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Basic 2D player movement script from: https://qookie.games/2d-player-movement/
+//This script NEEDS a mover and a jumper to work. This will automatically add them if there isn't one of each
+[RequireComponent(typeof(Mover))]
+[RequireComponent(typeof(Jumper))]
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float jumpForce = 10f;
-    private bool isGrounded;
-    private Rigidbody2D rb;
+    [Tooltip("How well we can control ourselves in the air. 1 = same as on ground")]
+    public float airControl = 0.5f;
+
+    //these are all just references to the various components attached to this object to make
+    //our lives easier
+    private Mover mover;
+    private Jumper jumper;
+    public Animator animator;
+    public ProjectileShooter projectileShooter1;
+    public ProjectileShooter projectileShooter2;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        //Find all the componenets attached to this object and save them to references
+        mover = gameObject.GetComponent<Mover>();
+        jumper = gameObject.GetComponent<Jumper>();
+        //animator = gameObject.GetComponent<Animator>();
+
+        //If we have a projectile shooter, we need to set it facing the right direction
+        if (projectileShooter1 != null)
+        {
+            projectileShooter1.SetDirection(new Vector2(1, 0));
+        }
+        if (projectileShooter2 != null)
+        {
+            projectileShooter2.SetDirection(new Vector2(1, 0));
+        }
     }
 
+    // Update is called once per frame
     void Update()
     {
-        // Handle horizontal movement
-        float moveInput = Input.GetAxis("Horizontal");
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        //If we have an animator...
+        if (animator != null)
         {
-            moveSpeed = 7.5f;
-        } else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            moveSpeed = 5f;
+            //Tell the animator that we are not currently walking
+            animator.SetBool("Walking", false);
+            //Tell the animator whether or not we're in the air
+            animator.SetBool("IsOnGround", jumper.GetIsOnGround());
+            //Tell the animator our current y velocity
+            animator.SetFloat("YVelocity", gameObject.GetComponent<Rigidbody2D>().velocity.y);
+            //It uses all these things to decide which animation to play
         }
 
-            rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        //Ask the jumper if we're in the air. If we are, apply the air control modifier
+        float airControlModifier = jumper.GetIsOnGround() ? 1f : airControl;
 
-        // Handle jumping
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        //Moving Right
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            //When right key is pressed, accelerate towards the right...
+            mover.AccelerateInDirection(new Vector2(airControlModifier, 0f));
+
+            if (animator != null)
+            {
+                //and tell the animator we are walking after all...
+                animator.SetBool("Walking", true);
+                Debug.Log("Walk animation");
+            }
+
+            //And flip our entire body to face the right
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 0f, transform.rotation.z);
+
+            //If we have a projectile shooter, we also need it to face the right
+            if (projectileShooter1 != null)
+            {
+                projectileShooter1.SetDirection(new Vector2(1f, 0.1f));
+            }
+            if (projectileShooter2 != null)
+            {
+                projectileShooter2.SetDirection(new Vector2(1f, 0.1f));
+            }
+        }
+
+        //Moving Left
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        {
+            //When left key is pressed, accelerate towards the left...
+            mover.AccelerateInDirection(new Vector2(-airControlModifier, 0f));
+
+            if (animator != null)
+            {
+                //and tell the animator we are walking after all...
+                animator.SetBool("Walking", true);
+                Debug.Log("Walk animation");
+            }
+
+            //And flip our entire body to face the left
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 180f, transform.rotation.z);
+
+            //If we have a projectile shooter, we also need it to face the left
+            if (projectileShooter1 != null)
+            {
+                projectileShooter1.SetDirection(new Vector2(-1f, 0.1f));
+            }
+            if (projectileShooter2 != null)
+            {
+                projectileShooter2.SetDirection(new Vector2(-1f, 0.1f));
+            }
+        }
+
+
+        //When Jumping
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //If the jump key is pressed... jump!
+            jumper.Jump();
+        }
+
+        //When shooting
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                //If we have a projectile shooter...
+                if (projectileShooter1 != null)
+                {
+                    //Shoot!
+                    projectileShooter1.Fire();
+                }
+            }
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                //If we have a projectile shooter...
+                if (projectileShooter2 != null)
+                {
+                    //Shoot!
+                    projectileShooter2.Fire();
+                }
+            }
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    public void UnlockDoubleJump()
     {
-        // Check if the player is on the ground
-        if (collision.gameObject.CompareTag("Ground"))
+        if (jumper != null)
         {
-            isGrounded = true;
-            Debug.Log("isGrounded = " + isGrounded);
+            jumper.doubleJumpAllowed = true;
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    public void UnlockWeapon(GameObject projectilePrefab)
     {
-        // Check if the player is no longer on the ground
-        if (collision.gameObject.CompareTag("Ground"))
+        if (projectileShooter1 != null)
         {
-            isGrounded = false;
-            Debug.Log("isGrounded = " + isGrounded);
+            projectileShooter1.projectilePrefab = projectilePrefab;
         }
     }
 }

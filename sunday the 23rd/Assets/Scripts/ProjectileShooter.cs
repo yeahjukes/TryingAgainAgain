@@ -9,7 +9,7 @@ public class ProjectileShooter : MonoBehaviour
     private Vector3 direction;
 
     // Start is called before the first frame update
-    void SetDirection(Vector3 newDirection)
+    public void SetDirection(Vector3 newDirection)
     {
         direction = newDirection;
     }
