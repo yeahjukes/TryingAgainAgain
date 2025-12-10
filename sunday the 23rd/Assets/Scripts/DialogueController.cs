@@ -12,10 +12,14 @@ public class DialogueController : MonoBehaviour
     public Transform target;
     [Tooltip("The actual text for the conversation that happens")]
     public List<string> talkingStrings;
+    [Tooltip("The text for the name cards")]
+    public List<string> nameStrings;
     [Tooltip("The UI element to show when talking")]
     public GameObject dialogueScreen;
     [Tooltip("The text to change into the talking strings")]
     public TMP_Text textToModify;
+    [Tooltip("The text to change into the character name")]
+    public TMP_Text nameText;
     [Tooltip("A sound to play on talk (requires audio source)")]
     public AudioClip talkSound;
 
@@ -104,6 +108,7 @@ public class DialogueController : MonoBehaviour
         talkTextIndex = 0;
         //Change the text to the right piece of dialogue
         textToModify.text = talkingStrings[talkTextIndex];
+        //nameText.text = nameStrings
 
         //Show the screen
         dialogueScreen.SetActive(true);
@@ -121,6 +126,7 @@ public class DialogueController : MonoBehaviour
         talkTextIndex++;
         //Ans change the text to the right piece of dialogue
         textToModify.text = talkingStrings[talkTextIndex];
+        nameText.text = nameStrings[talkTextIndex];
 
         //If we have an audio source and a sound, play it
         if (myAudioSoure && talkSound)
