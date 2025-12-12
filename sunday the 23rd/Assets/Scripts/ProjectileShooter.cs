@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileShooter : MonoBehaviour
 {
     public GameObject projectilePrefab;
+    public GameObject tempProjectile;
     public Transform spawnPoint;
     private Vector3 direction;
 
@@ -16,7 +17,19 @@ public class ProjectileShooter : MonoBehaviour
 
     public void Fire()
     {
-        GameObject newProjectile = Instantiate(projectilePrefab) as GameObject;
+        GameObject newProjectile = new GameObject();
+
+        if (tempProjectile != null)
+        {
+            newProjectile = Instantiate(tempProjectile) as GameObject;
+            tempProjectile = null;
+        }
+        else
+        {
+            newProjectile = Instantiate(projectilePrefab) as GameObject;
+        }
+
+        newProjectile = Instantiate(projectilePrefab) as GameObject;
 
         newProjectile.transform.position = spawnPoint.position;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneManager : MonoBehaviour
+public class ManagingScenes : MonoBehaviour
 {
     public int sceneNumber;
 
@@ -26,7 +26,7 @@ public class SceneManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("Start game");
-                //SceneManager.LoadScene("Level1");
+                SceneManager.LoadScene("Level1");
             }
         }
     }

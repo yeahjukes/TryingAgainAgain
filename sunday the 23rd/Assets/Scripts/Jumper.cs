@@ -13,8 +13,11 @@ public class Jumper : MonoBehaviour
     [Tooltip("Whether or not the player currently has Double Jump unlocked")]
     public bool doubleJumpAllowed = false;
 
-    [Tooltip("What sound to play when we jump if we have an Audio Source")]
-    public AudioClip jumpSound;
+    //[Tooltip("What sound to play when we jump if we have an Audio Source")]
+    //public AudioClip jumpSound;
+
+    [Tooltip("An Audio Randomizer to play randomized jump sounds")]
+    public AudioRandomizer audioRandomizer;
 
     //A boolean that detects whether or not we are touching something. Allowing us to jump again.
     private bool isOnGround;
@@ -47,9 +50,9 @@ public class Jumper : MonoBehaviour
                 new Vector2(myRigidbody.velocity.x, jumpImpulse * jumpBonusModifier);
 
             //If we have an audio source and a jump sound, play it
-            if (GetComponent<AudioSource>() != null && jumpSound != null)
+            if (audioRandomizer != null)
             {
-                GetComponent<AudioSource>().PlayOneShot(jumpSound);
+                audioRandomizer.PlayRandomizedSound();
             }
         }
     }
