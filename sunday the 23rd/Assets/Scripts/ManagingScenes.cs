@@ -29,5 +29,7 @@ public class ManagingScenes : MonoBehaviour
                 SceneManager.LoadScene("Level1");
             }
         }
+
+
     }
 }
