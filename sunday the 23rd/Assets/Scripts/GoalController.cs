@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GoalController : MonoBehaviour
 {
+    public int sceneNumber;
 
     void Start()
     {
@@ -13,9 +14,20 @@ public class GoalController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "LoadZone")
+        if (sceneNumber == 1)
         {
-            SceneManager.LoadScene("Level2");
+            if (other.tag == "LoadZone")
+            {
+                SceneManager.LoadScene("Level2");
+            }
+        }
+
+        if (sceneNumber == 2)
+        {
+            if (other.tag == "LoadZone")
+            {
+                //SceneManager.LoadScene("Level3");
+            }
         }
     }
 }
