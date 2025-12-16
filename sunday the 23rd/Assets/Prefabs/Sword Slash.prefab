@@ -180,4 +180,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   faction: 1
-  knockbackForce: 0
+  knockbackForce: 3

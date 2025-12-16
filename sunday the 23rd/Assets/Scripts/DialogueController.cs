@@ -10,6 +10,10 @@ public class DialogueController : MonoBehaviour
     public float minTalkDistance;
     [Tooltip("The object to measure distance against. Usually the player")]
     public Transform target;
+
+    // Two versions of sprites to show feedback
+    public Animator animator;
+
     [Tooltip("The actual text for the conversation that happens")]
     public List<string> talkingStrings;
     [Tooltip("The text for the name cards")]
@@ -62,12 +66,18 @@ public class DialogueController : MonoBehaviour
             {
                 //Listen for input
                 DetectInput();
+
+                //Give feedback
+                animator.SetBool("LitScreen", true);
             }
             //If not...
             else if (showingDialgoue)
             {
                 //Be sure to hide the dialogue
                 EndDialogue();
+            } else
+            {
+                animator.SetBool("LitScreen", false);
             }
         }
     }
