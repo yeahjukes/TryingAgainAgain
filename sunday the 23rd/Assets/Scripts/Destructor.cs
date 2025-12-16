@@ -23,6 +23,7 @@ public class Destructor : MonoBehaviour
         {
             //Make it take damage
             destrucible.TakeDamage(damage);
+            Debug.Log("Dealing damage!");
 
             //And push it back if it has a rigidbody2d
             Vector3 knockbackVector = collision.transform.position - transform.position;

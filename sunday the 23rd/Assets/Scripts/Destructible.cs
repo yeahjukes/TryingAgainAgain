@@ -24,6 +24,8 @@ public class Destructible : MonoBehaviour
     //Function to inflict damage on this Destructible
     public void TakeDamage(int damageAmount)
     {
+        Debug.Log("Taking damage!");
+
         //Modify hitpoints by the damage amount
         ModifyHitPoints(-damageAmount);
 
