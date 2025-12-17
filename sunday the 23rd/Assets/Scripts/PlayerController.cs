@@ -19,12 +19,14 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public ProjectileShooter projectileShooter1;
     public ProjectileShooter projectileShooter2;
+    private Dasher dasher;
 
     void Start()
     {
         //Find all the componenets attached to this object and save them to references
         mover = gameObject.GetComponent<Mover>();
         jumper = gameObject.GetComponent<Jumper>();
+        dasher = gameObject.GetComponent<Dasher>();
         //animator = gameObject.GetComponent<Animator>();
 
         //If we have a projectile shooter, we need to set it facing the right direction
@@ -81,6 +83,11 @@ public class PlayerController : MonoBehaviour
             {
                 projectileShooter2.SetDirection(new Vector2(1f, 0.1f));
             }
+
+            if (dasher != null)
+            {
+                dasher.SetDirection(new Vector2(1f, 0.1f));
+            }
         }
 
         //Moving Left
@@ -108,6 +115,11 @@ public class PlayerController : MonoBehaviour
             {
                 projectileShooter2.SetDirection(new Vector2(-1f, 0.1f));
             }
+
+            if (dasher != null)
+            {
+                dasher.SetDirection(new Vector2(-1f, 0.1f));
+            }
         }
 
 
@@ -116,6 +128,15 @@ public class PlayerController : MonoBehaviour
         {
             //If the jump key is pressed... jump!
             jumper.Jump();
+        }
+
+        // When dashing
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        {
+            if (dasher != null)
+            {
+                dasher.Dash();
+            }
         }
 
         //When shooting
@@ -155,6 +176,14 @@ public class PlayerController : MonoBehaviour
         if (projectileShooter1 != null)
         {
             projectileShooter1.projectilePrefab = projectilePrefab;
+        }
+    }
+
+    public void UnlockDash()
+    {
+        if (projectileShooter1 != null)
+        {
+            dasher.dashAllowed = true;
         }
     }
 }
