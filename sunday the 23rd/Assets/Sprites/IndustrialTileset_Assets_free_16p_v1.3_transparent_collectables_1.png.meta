@@ -224,7 +224,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      IndustrialTileset_Assets_free_16p_v1.3_transparent_collectables_1_0: -5136094044593979708
+      IndustrialTileset_Assets_free_16p_v1.3_transparent_collectables_1_1: 4787773547808276281
+      IndustrialTileset_Assets_free_16p_v1.3_transparent_collectables_1_2: -4243919695203839908
+      IndustrialTileset_Assets_free_16p_v1.3_transparent_collectables_1_3: 7878204821309482454
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

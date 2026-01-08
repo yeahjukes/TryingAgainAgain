@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Conveyr-Belt-Sheet-Middle_0: 1759746903761580592
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

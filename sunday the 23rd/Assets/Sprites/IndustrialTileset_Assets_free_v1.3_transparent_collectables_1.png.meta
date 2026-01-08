@@ -536,7 +536,24 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_0: -3615654210038223989
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_1: -2334971789791036044
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_10: 6562902527971624774
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_11: -487358624701915952
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_12: 4066946208048385116
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_13: 4315297754028165184
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_14: 5163991277311271270
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_15: -6177495711905921529
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_16: 2181062160358859414
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_2: 8673928397038132307
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_3: 4825194384162645043
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_4: -1704785665575119787
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_5: 5172208458819245826
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_6: 4267438770183498626
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_7: 4866370259693265799
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_8: 8084934841504884018
+      IndustrialTileset_Assets_free_v1.3_transparent_collectables_1_9: -3656424549702299094
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

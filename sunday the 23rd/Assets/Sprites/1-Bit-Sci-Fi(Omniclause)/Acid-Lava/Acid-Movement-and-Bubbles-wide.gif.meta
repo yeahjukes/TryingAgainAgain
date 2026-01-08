@@ -296,7 +296,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Acid-Movement-and-Bubbles-wide_0: 8253396074646884024
+      Acid-Movement-and-Bubbles-wide_1: -5909853632613793784
+      Acid-Movement-and-Bubbles-wide_2: -2970591636296628202
+      Acid-Movement-and-Bubbles-wide_3: 1798612976437031730
+      Acid-Movement-and-Bubbles-wide_4: 5336659982325324335
+      Acid-Movement-and-Bubbles-wide_5: -4565421097796630422
+      Acid-Movement-and-Bubbles-wide_6: -7138009147407779901
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

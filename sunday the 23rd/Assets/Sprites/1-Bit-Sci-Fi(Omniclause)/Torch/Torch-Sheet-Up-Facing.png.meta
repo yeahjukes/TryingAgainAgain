@@ -320,7 +320,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Torch-Sheet-Up-Facing_0: 7250023232100278548
+      Torch-Sheet-Up-Facing_1: 5072000974515180538
+      Torch-Sheet-Up-Facing_2: 2550093926982849327
+      Torch-Sheet-Up-Facing_3: 2996284651512859729
+      Torch-Sheet-Up-Facing_4: -3790961922792705975
+      Torch-Sheet-Up-Facing_5: 390613355131605350
+      Torch-Sheet-Up-Facing_6: -1930981225998687573
+      Torch-Sheet-Up-Facing_7: -1323271400452995091
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

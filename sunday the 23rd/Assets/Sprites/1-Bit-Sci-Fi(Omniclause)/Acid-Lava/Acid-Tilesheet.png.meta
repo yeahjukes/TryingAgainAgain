@@ -272,7 +272,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Acid-Tilesheet_0: -7131415845928725952
+      Acid-Tilesheet_1: -9081719515020416042
+      Acid-Tilesheet_2: -413107147461451272
+      Acid-Tilesheet_3: -7082234101078056366
+      Acid-Tilesheet_4: 3768385599684434440
+      Acid-Tilesheet_5: -6227699512522818098
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

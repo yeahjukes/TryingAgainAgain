@@ -152,7 +152,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Conveyer-Belt_0: -3690387126809162727
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
